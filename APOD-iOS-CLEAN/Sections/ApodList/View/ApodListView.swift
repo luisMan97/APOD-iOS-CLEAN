@@ -18,6 +18,7 @@ struct ApodListView: View {
     @State private var date = Date()
     @State private var collapsed: Bool = true
     @State private var goToDetail: Bool = false
+    @State private var selectedApod: ApodList.Apod.Domain? = nil
     
     // MARK: - Private Properties
     
@@ -75,12 +76,16 @@ struct ApodListView: View {
                                 .padding(.horizontal)
                                 .onTapGesture {
                                     goToDetail = true
+                                    selectedApod = apod
                                 }
-                            
-                            NavigationLink(destination: ApodDetailView(apod: apod), isActive: $goToDetail) {
+                        }//.buttonStyle(PlainButtonStyle())
+                        
+                        if let selectedApod = selectedApod {
+                            NavigationLink(destination: ApodDetailView(apod: selectedApod), isActive: $goToDetail) {
                                 EmptyView()
                             }
-                        }//.buttonStyle(PlainButtonStyle())
+                        }
+                        
                     }
                 }
                 .navigationBarTitle("Astronomy Picture of the Day")
