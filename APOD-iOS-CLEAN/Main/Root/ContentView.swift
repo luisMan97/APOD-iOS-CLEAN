@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    init() {
+        UINavigationBar().setup(backgroundColor: UIColor(red: 0.052, green: 0.141, blue: 0.245, alpha: 1))
+    }
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ApodListFactory.getApodListView()
     }
 }
 
